@@ -1,0 +1,20 @@
+# Используем базовый образ Python 3.10
+FROM python:3.10
+
+# Устанавливаем curl без лишних зависимостей
+RUN apt-get update && apt-get install -y \
+--no-install-recommends curl && \
+rm -rf /var/lib/apt/lists/*
+
+# Создаём рабочую директорию
+WORKDIR /app
+
+# Копируем зависимости из файла и устанавливаем их
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Копируем код в рабочую директорию
+COPY . /app
+
+# Запускаем Gradio
+CMD ["python", "app.py"]

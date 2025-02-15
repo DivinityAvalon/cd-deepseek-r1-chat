@@ -1,167 +1,129 @@
-# 🧠 DeepSeek Code Companion
+# 🔮 DeepSeek Code Companion запуск в Docker
 
-![DeepSeek Code Companion Interface](interface.png)
+![DeepSeek Code Companion Interface](interface_new.png)
 
-## 🚀 Overview
+## 🚀 Обзор
 
-DeepSeek Code Companion is an AI-powered coding assistant that runs completely locally on your machine. Built with Gradio and powered by the DeepSeek-r1 language model through Ollama, it provides intelligent coding assistance, debugging help, and programming guidance.
+DeepSeek Code Companion — это локальный AI-ассистент для разработчиков, который помогает с кодированием, отладкой и документированием кода. Основан на Gradio и моделях DeepSeek, запущенных через Ollama.
 
-## ✨ Features
+## ✨ Особенности
 
-- 🐍 Python Expert
-- 🐞 Debugging Assistant
-- 📝 Code Documentation
-- 💡 Solution Design
-- 🏃‍♂️ Runs 100% locally
-- 🔒 Privacy-focused
+- 🌐 Запуск в Docker
+- 🌍 Интеграция с Ollama
+- 🏃‍♂️ Запуск на 100% локально
+- 🔒 Приватность ваших данных
+- 🌐 English Language
 
-## 🛠️ Prerequisites
+### Добавленные параметры управления моделью
 
-Before running the app, make sure you have:
+| Добавленный параметр     | Что делает?                          | Как изменяет поведение модели? |
+|-------------------------|--------------------------------|--------------------------------|
+| **temperature**        | Управляет креативностью         | Выше → ответы разнообразнее   |
+| **top_p**             | Ограничивает вероятность выбора слов | Ниже → больше точности, меньше вариаций |
+| **top_k**             | Ограничивает количество возможных токенов | Ниже → модель более уверенно выбирает слова |
+| **repeat_penalty** | Штрафует модель за повторения   | Выше → меньше повторов, текст разнообразнее |
 
-1. **Python 3.8+** installed on your system
-2. **Ollama** installed from [ollama.com](https://ollama.com)
-3. The DeepSeek model pulled (instructions below)
+## 🔥 Ключевые функции
 
-## 📦 Installation
+Модель DeepSeek точно настроена для работы с Python, предоставляя:
+- Автозавершение кода
+- Отладку и исправление ошибок
+- Предложения лучших практик
+- Советы по оптимизации производительности
 
-1. **Clone the repository**
-bash
-git clone https://github.com/Rizwankaka/deepseek-r1-chat.git
+### Помощник по отладке
 
-cd deepseek-r1-chat
+- Стратегические print-выражения
+- Анализ ошибок
+- Пошаговое решение проблем
+- Отладка ошибок времени выполнения
 
-2. **Install dependencies**
+### Документирование кода
 
-```bash
-pip install -r requirements.txt
-```
+- Автоматическое создание docstring
+- Объяснение кода
+- Предложения по комментариям
+- Лучшие практики документирования
 
-3. **Download the DeepSeek model using Ollama**
-```bash
-ollama pull deepseek-r1:1.5b
-```
+### Проектирование решений
 
-## 🚀 Running the App
+- Рекомендации по архитектуре
+- Паттерны проектирования
+- Структура кода
+- Обсуждение масштабируемости
 
-1. **Start Ollama** (if not already running)
-```bash
-ollama serve
-```
+## 🛠️ Перед запуском
 
-2. **Launch the app**
-```bash
-python app.py
-```
+1. **Docker** и **Docker Compose** должны быть установлены на вашем устройстве.
+2. **Данная сборка расчитана на работу с GPU**, убедитесь, что все драйверы NVIDIA и CUDA у вас установлены.
 
-3. **Open your browser** and navigate to:
-```
-http://127.0.0.1:7860
-```
+## 🌍 Запуск в Docker
 
-## 💻 Usage
+1. **Клонируем репозиторий:**
 
-1. Select your preferred model version from the dropdown (1.5b or 3b)
-2. Type your coding question in the chat input
-3. Get instant, locally-processed responses for your coding queries!
-
-## 🛠️ Built With
-
-- [Gradio](https://www.gradio.app/) - Web interface
-- [LangChain](https://langchain.com/) - LLM framework
-- [Ollama](https://ollama.com/) - Local model serving
-- [DeepSeek-r1](https://ollama.com/library/deepseek-r1) - Language model
-
-## 📝 Requirements
-
-```bash
-gradio
-langchain
-langchain-core
-langchain-ollama
-```
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues).
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- DeepSeek team for the amazing model
-- Ollama team for making local LLMs accessible
-- LangChain team for the fantastic framework
-
----
-⭐ If you found this project helpful, please consider giving it a star!
-
-## 📸 Screenshot
-
-![App Screenshot](interface.png)
-
-## 🔥 Key Features Explained
-
-### Python Expertise
-The DeepSeek model is specifically fine-tuned for Python programming, offering:
-- Code completion
-- Bug fixing
-- Best practices suggestions
-- Performance optimization tips
-
-### Debugging Assistant
-- Strategic print statement suggestions
-- Error analysis
-- Step-by-step problem solving
-- Runtime error debugging
-
-### Code Documentation
-- Automatic docstring generation
-- Code explanation
-- Comment suggestions
-- Documentation best practices
-
-### Solution Design
-- Architecture recommendations
-- Design patterns
-- Code organization
-- Scalability considerations
-
-## 🚫 Common Issues & Solutions
-
-1. **Ollama Connection Error**
-   ```
-   Solution: Ensure Ollama is running with 'ollama serve'
+   ```bash
+   git clone https://gitverse.ru/glazkov-oleg/deepseek-r1-distill-chat.git
+   cd deepseek-r1-distill-chat
    ```
 
-2. **Model Not Found**
-   ```
-   Solution: Run 'ollama pull deepseek-r1:1.5b'
-   ```
+2. **Запускаем Docker:**
 
-3. **Port Already in Use**
-   ```
-   Solution: Change the port in app.launch(server_port=XXXX)
+   ```bash
+   docker compose up --build -d
    ```
 
-## 💡 Tips for Best Results
+3. **Откройте браузер и перейдите по адресу:**
 
-1. Be specific in your questions
-2. Provide context when asking about code
-3. Use the 1.5b model for faster responses
-4. Use the 3b model for more complex tasks
+   `http://localhost:7860`
 
-## 🔄 Updates & Maintenance
+## 💡 Примечания
 
-Stay updated with the latest features:
+- При первом запуске Docker сам подтянет модели DeepSeek.
+- Если сервер не запускается, проверьте логи `docker logs ollama`.
+
+## 🚀 Как использовать
+
+1. Введите вопрос по коду 
+2. Получите ответ от AI 
+3. Проверьте результат и поправьте код
+4. Отрегулируейте параметры модели
+
+## 🛠️ Кто может использовать?
+
+- Программисты и архитекторы
+- Аспиранты и студенты IT-специальностей
+- Все, кто хочет погрузиться в AI-кодинг
+
+## 💡 Советы для лучших результатов
+
+1. Формулируйте свои вопросы точно
+2. Предоставляйте контекст при запросах о коде
+3. Используйте модель 1.5b для быстрых ответов
+4. Используйте модель 7b для решения досточно сложных задач
+5. Используйте модель 14b для вашего супер-интеллекта
+
+## 🔄 Обновления и поддержка
+
+Оставайтесь в курсе последних обновлений:
 
 ```bash
 git pull origin main
 pip install -r requirements.txt
 ```
 
+## 🙏 Благодарности
+
+- Команде DeepSeek за создание удивительной модели
+- Команде Ollama за возможность локальной работы с LLM
+- Команде LangChain за отличный фреймворк
+- [Rizwankaka][repo-link]
+
+[repo-link]: https://github.com/Rizwankaka/deepseek-r1-chat.git
+
 ---
 
-Made with ❤️ by Rizwan Rizwan, for the community
+Проект выполнен glazole с ❤️ для сообщества!
+
+---
+
+⭐ Если вам понравился проект, поддержите его звездочкой!
