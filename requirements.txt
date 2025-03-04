@@ -2,3 +2,4 @@ gradio
 langchain
 langchain_ollama
 langchain_core
+pip install -r
